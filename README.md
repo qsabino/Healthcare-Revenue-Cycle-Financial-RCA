@@ -4,7 +4,7 @@
 
 This project was created to practice the technical skills commonly used in Healthcare Revenue Cycle and Financial Analytics roles.
 
-The workflow simulates a healthcare claims environment by generating claim data, loading it into PostgreSQL, performing SQL-based root cause analysis, validating findings through statistical testing, and producing automated Excel reports.
+The workflow take a raw healthcare claims dataset, clean it, loading it into PostgreSQL, performing SQL-based root cause analysis, validating findings through statistical testing, and producing automated Excel reports.
 
 ## Tools Used
 
