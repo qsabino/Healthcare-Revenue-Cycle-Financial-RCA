@@ -42,6 +42,5 @@ The project generates a multi-sheet Excel workbook containing:
 - Department Performance
 
 ## Run the Project
-- pip install -r requirements.txt
 - python main.py
 <img width="1318" height="661" alt="image" src="https://github.com/user-attachments/assets/20e6db35-49a8-4be9-bb28-dc39844414e4" />
