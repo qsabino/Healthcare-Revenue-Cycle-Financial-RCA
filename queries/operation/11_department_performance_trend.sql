@@ -1,43 +1,17 @@
 -- BQ: Which departments are getting worse in revenue leakage over time?
 
-
 WITH dept_month AS (
-
-    SELECT
-        
-		department,
-        
+    SELECT       
+		department,      
 		DATE_TRUNC('month', service_date::DATE)::DATE AS month,
-        
-		SUM(payment_variance)::NUMERIC AS leakage
-
+        SUM(payment_variance)::NUMERIC AS leakage
     FROM fact_claims
-
     GROUP BY 1,2
-
 )
-
-SELECT
-    
+SELECT  
 	department,
-    
-	month,
-    
-	leakage,
-
-    ROUND(
-		LAG(leakage) OVER (
-        	PARTITION BY department
-        	ORDER BY month
-    	), 
-		2) AS prior_month,
-
-	ROUND(
-	    leakage
-	        - LAG(leakage) OVER (
-	            PARTITION BY department
-	            ORDER BY month
-	        ),
-		2) AS change_amount
-
+    month,
+    ROUND(leakage, 2) AS leakage,
+    LAG(leakage) OVER (PARTITION BY department ORDER BY month) AS prior_month,
+	(leakage  - LAG(leakage) OVER (PARTITION BY department ORDER BY month)) AS change_amount
 FROM dept_month;
